@@ -195,5 +195,10 @@ public class NameRepository {
         return true;
     }
 
+    public static void printAllArrayItems() {
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
 
 }

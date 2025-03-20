@@ -111,6 +111,14 @@ public class NameRepositoryTest {
     @DisplayName("Find All that have the same firstname")
     public void findByFirstNameTest() {
         //Arrange
+
         String[] arraySet = new String[]{"Gentrit Hoti", "Genc Hoti", "Gelinda Hoti", "Gonxhe Hoti", "Gentrit Gashi", "Gentrit Kelmendi", "Gentrit Kalludra"};
+        //Act
+        NameRepository.setNames(arraySet);
+        String[] result = NameRepository.findByFirstName("Gentrit");
+        String[] expected = new String[]{"Gentrit Hoti", "Gentrit Gashi", "Gentrit Kelmendi", "Gentrit Kalludra"};
+        //Assert
+        Assertions.assertArrayEquals(expected, result);
     }
+
 }
