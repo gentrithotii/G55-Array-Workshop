@@ -37,21 +37,21 @@ public class App {
 
 
 
-//        System.out.println(NameRepository.getSize());
-//
-//        String result1 = NameRepository.find("Gentrit Hoti");
-//        System.out.println(result1);
-//
-//        String[] findByFirstNameArray = NameRepository.findByFirstName("Gentrit");
-//        System.out.println("Find by First Name:  " + Arrays.toString(findByFirstNameArray));
-//
-//        String[] findByLastNameArray = NameRepository.findByLastName("Hoti");
-//        System.out.println("Find by Last Name: " + Arrays.toString(findByLastNameArray));
-//
-//
-//        System.out.println(NameRepository.update("Gentrit vf", "Millian Hoti"));
-//
-//        System.out.println(NameRepository.remove("Gentrit Hoti"));
+        System.out.println(NameRepository.getSize());
+
+        String result1 = NameRepository.find("Gentrit Hoti");
+        System.out.println(result1);
+
+        String[] findByFirstNameArray = NameRepository.findByFirstName("Gentrit");
+        System.out.println("Find by First Name:  " + Arrays.toString(findByFirstNameArray));
+
+        String[] findByLastNameArray = NameRepository.findByLastName("Hoti");
+        System.out.println("Find by Last Name: " + Arrays.toString(findByLastNameArray));
+
+
+        System.out.println(NameRepository.update("Gentrit vf", "Millian Hoti"));
+
+        System.out.println(NameRepository.remove("Gentrit Hoti"));
 
 
         String[] copyNamesArrayTwo = NameRepository.findAll();

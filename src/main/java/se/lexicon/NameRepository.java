@@ -43,6 +43,10 @@ public class NameRepository {
      * @return A new array containing all elements from the names array.
      */
     public static String[] findAll() {
+        if (names.length == 0) {
+            return new String[0];
+        }
+
         String[] copyArray = new String[NameRepository.names.length];
 
         for (int i = 0; i < NameRepository.names.length; i++) {
@@ -60,6 +64,9 @@ public class NameRepository {
      * @return The matching name if found; otherwise, null.
      */
     public static String find(String fullName) {
+        if (fullName == null || fullName.isEmpty()) {
+            return "Cannot have an empty or null name";
+        }
 
         for (int i = 0; i < NameRepository.names.length; i++) {
             if (NameRepository.names[i].equalsIgnoreCase(fullName)) {
@@ -78,6 +85,10 @@ public class NameRepository {
      * @return True if the fullName is added successfully; false if it already exists.
      */
     public static boolean add(String fullName) {
+        if (fullName == null || fullName.isEmpty()) {
+            return false;
+        }
+
         String[] newArrayNames = new String[names.length + 1];
 
         for (int i = 0; i < NameRepository.names.length; i++) {
@@ -101,9 +112,13 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByFirstName(String firstName) {
+        if (firstName == null || firstName.isEmpty()) {
+            return new String[0];
+        }
+
         int foundName = 0;
         for (int i = 0; i < NameRepository.names.length; i++) {
-            if (names[i].contains(firstName)) {
+            if (names[i].toLowerCase().contains(firstName.toLowerCase())) {
                 foundName++;
             }
         }
@@ -128,9 +143,12 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByLastName(String lastName) {
+        if (lastName == null || lastName.isEmpty()) {
+            return new String[0];
+        }
         int foundName = 0;
         for (int i = 0; i < NameRepository.names.length; i++) {
-            if (names[i].contains(lastName)) {
+            if (names[i].toLowerCase().contains(lastName.toLowerCase())) {
                 foundName++;
             }
         }
@@ -138,7 +156,7 @@ public class NameRepository {
         String[] matchingLastNamesArray = new String[foundName];
 
         for (int i = 0, j = 0; i < NameRepository.names.length; i++) {
-            if (names[i].contains(lastName)) {
+            if (names[i].toLowerCase().contains(lastName.toLowerCase())) {
                 matchingLastNamesArray[j] = names[i];
                 j++;
             }
@@ -156,6 +174,10 @@ public class NameRepository {
      * @return True if the name is updated successfully; false if the updated name already exists or the original name is not found.
      */
     public static boolean update(String original, String updatedName) {
+        if (original == null || original.isEmpty() || updatedName == null || updatedName.isEmpty()) {
+            return false;
+        }
+
         for (int i = 0; i < NameRepository.names.length; i++) {
 
             if (names[i].equalsIgnoreCase(updatedName)) {
@@ -178,12 +200,16 @@ public class NameRepository {
      * @return True if the name is removed successfully; false if the name is not found in the array.
      */
     public static boolean remove(String fullName) {
+        if (fullName == null || fullName.isEmpty()) {
+            return false;
+        }
+
         String[] arrayOfNumbs = new String[NameRepository.names.length - 1];
 
         for (int i = 0, j = 0; i < names.length; i++) {
-            if (!find(fullName).equals(fullName)) {
+            if (!find(fullName).equalsIgnoreCase(fullName)) {
                 return false;
-            } else if (names[i].contains(fullName)) {
+            } else if (names[i].equalsIgnoreCase(fullName)) {
 
             } else {
                 arrayOfNumbs[j] = names[i];
@@ -193,12 +219,6 @@ public class NameRepository {
 
         setNames(arrayOfNumbs);
         return true;
-    }
-
-    public static void printAllArrayItems() {
-        for (String name : names) {
-            System.out.println(name);
-        }
     }
 
 }
